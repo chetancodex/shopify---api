@@ -7,13 +7,13 @@ const ProductController = require('../controllers/product');
 //Get Products
 router.get('/', ProductController.getAllProducts);
 //Post Products
-router.post('/',ProductController.postProduct)
+router.post('/',ProductController.postProduct);
 
 //Get ProductsId
-router.get('/:productId',ProductController.getProductId)
+router.get('/:productId',ProductController.getProductId);
 
 //Patch ProductsId
-router.patch('/:productsId',ProductController.updateProduct)
+router.patch('/:productsId',ProductController.updateProduct);
 // Delete ProductsId
 router.delete("/:productsId",ProductController.deleteProducts);
 

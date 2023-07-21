@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const newUser = require("../models/newuser");
 const mongoose = require("mongoose");
-const userController = require("../controllers/users");
+const newUser = require("../models/newuser")
+const UserController = require("../controllers/users");
 // To register User
-router.post("/register",userController.register)
+router.post('/',UserController.register);
 
 
 module.exports = router

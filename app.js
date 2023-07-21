@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 const jsonwebtoken = require("jsonwebtoken");
 
 
@@ -17,7 +18,7 @@ mongoose
     console.log(err);
   });
 
-  
+
 //Express is a Node Js framework
 const app = express();
 app.use(cors());
@@ -33,7 +34,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Routes which should handle request
+app.use("/newuser", newUserRoutes);
 app.use("/products", productRoutes);
+
 // JWT token verifier function
 app.use((req, res, next) => {
   if (
@@ -55,7 +58,7 @@ app.use((req, res, next) => {
     req.user = undefined
   }
 });
-app.use("/user", newUserRoutes);
+//app.use("/user", newUserRoutes);
 app.use("/cart", cartRoutes);
 
 
