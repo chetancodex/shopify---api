@@ -1,5 +1,5 @@
 {
     "env":{
-        "MONGODB_PW":"jasmin"
+        "URI": "mongodb+srv://chetan:jasmin@node-rest-api.lvrifv6.mongodb.net/?retryWrites=true&w=majority"
     }
 }

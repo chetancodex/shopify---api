@@ -2,56 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/products");
 const mongoose = require("mongoose");
+const ProductController = require('../controllers/product');
+
 //Get Products
-router.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "Handling GET request to /products",
-  });
-});
+router.get('/', ProductController.getAllProducts);
 //Post Products
-router.post("/", (req, res, next) => {
-  const product = new Product({
-    _id: new mongoose.Types.ObjectId(),
-    name: req.body.name,
-    description: req.body.description,
-    rating: req.body.rating,
-    price: req.body.price,
-  });
-  product.save().then(result=>{
-    console.log(result)
-  }).catch(error=> {
-    console.log(error)
-  });
-  res.status(200).json({
-    message: "Handling POST request to /products",
-    createProduct: product,
-  });
-});
+router.post('/',ProductController.postProduct)
+
 //Get ProductsId
-// router.get("/:productsId", (req, res, next) => {
-//   const id = req.params.productsId;
-//   if (id === "special") {
-//     res.status(200).json({
-//       message: "You have entered in a special route",
-//       id: id,
-//     });
-//   } else {
-//     res.status(200).json({
-//       message: "You have passed an ID",
-//     });
-//   }
-// });
+router.get('/:productId',ProductController.getProductId)
+
 //Patch ProductsId
-// router.patch("/:productsId", (req, res, next) => {
-//   res.status(200).json({
-//     message: "Update ProductsId",
-//   });
-// });
+router.patch('/:productsId',ProductController.updateProduct)
 // Delete ProductsId
-// router.delete("/:productsId", (req, res, next) => {
-//   res.status(200).json({
-//     message: "Deleted ProductsId",
-//   });
-// });
+router.delete("/:productsId",ProductController.deleteProducts);
 
 module.exports = router;
