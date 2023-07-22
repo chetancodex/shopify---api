@@ -4,9 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const jsonwebtoken = require("jsonwebtoken");
-
 
 //Mongoose Connect
 mongoose
@@ -18,7 +16,6 @@ mongoose
     console.log(err);
   });
 
-
 //Express is a Node Js framework
 const app = express();
 app.use(cors());
@@ -26,6 +23,7 @@ app.use(cors());
 const productRoutes = require("./app/routes/products");
 const newUserRoutes = require("./app/routes/newuser");
 const cartRoutes = require("./app/routes/cart");
+const userUpdateRoutes = require("./app/routes/userupdate")
 
 // App Usage
 //Morgan used for Logging
@@ -55,13 +53,11 @@ app.use((req, res, next) => {
       }
     );
   } else {
-    req.user = undefined
+    req.user = undefined;
   }
 });
-//app.use("/user", newUserRoutes);
+app.use("/userUpdate", userUpdateRoutes);
 app.use("/cart", cartRoutes);
-
-
 
 //Exports
 module.exports = app;

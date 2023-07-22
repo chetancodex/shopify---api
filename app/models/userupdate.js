@@ -1,19 +1,8 @@
 const mongoose = require("mongoose");
-const UserDetailsSchema = new mongoose.Schema({
+const UserUpdateSchema = new mongoose.Schema({
   id: { type: Number, required: true },
-  email: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, required: true },
-  name: {
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-    },
-  },
   address: {
     city: String,
     street: String,
@@ -22,4 +11,4 @@ const UserDetailsSchema = new mongoose.Schema({
   },
   contactNumber: { type: String, required: true },
 });
-module.exports = mongoose.model("UserDetails", UserDetailsSchema);
+module.exports = mongoose.model("UserUpdate", UserUpdateSchema);

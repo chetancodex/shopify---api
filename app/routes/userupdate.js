@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
+const User = require("../models/userupdate");
 const mongoose = require("mongoose");
-const user = require("../models/user");
+// const user = require("../models/user");
 // Get User
 router.get("/", (req, res, next) => {
   const id = req.params.id;
@@ -24,13 +24,8 @@ router.post("/", (req, res, next) => {
 
   const user = new User({
     id: userCount + 1,
-    email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    name: {
-      firstName: req.body.name.firstName,
-      lastName: req.body.name.lastName,
-    },
     address: {
       city: req.body.address.city,
       street: req.body.address.street,
