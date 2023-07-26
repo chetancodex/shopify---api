@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/userupdate");
+const User = require("../models/userupdatemodel");
 const mongoose = require("mongoose");
 // const user = require("../models/user");
 // Get User

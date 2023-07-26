@@ -20,10 +20,10 @@ mongoose
 const app = express();
 app.use(cors());
 
-const productRoutes = require("./app/routes/products");
-const newUserRoutes = require("./app/routes/newuser");
-const cartRoutes = require("./app/routes/cart");
-const userUpdateRoutes = require("./app/routes/userupdate")
+const productRoutes = require("./app/routes/productsroute");
+const newUserRoutes = require("./app/routes/newuserroute");
+const cartRoutes = require("./app/routes/cartroute");
+const userUpdateRoutes = require("./app/routes/userupdateroute")
 
 // App Usage
 //Morgan used for Logging
@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 //Routes which should handle request
 app.use("/newuser", newUserRoutes);
 app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
 
 // JWT token verifier function
 app.use((req, res, next) => {
@@ -57,7 +58,7 @@ app.use((req, res, next) => {
   }
 });
 app.use("/userUpdate", userUpdateRoutes);
-app.use("/cart", cartRoutes);
+
 
 //Exports
 module.exports = app;
