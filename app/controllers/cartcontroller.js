@@ -21,7 +21,7 @@ exports.postCart = (req, res, next) => {
     });
   } else {
     const { userId, productId, quantity } = req.body;
-    if ((!userId || !productId, !quantity)) {
+    if ((!userId || !productId || !quantity)) {
       return res.status(400).json({
         error: "Invalid data provided",
       });
