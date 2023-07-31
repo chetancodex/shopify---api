@@ -32,14 +32,14 @@ exports.sign_in = async (req, res) => {
         .status(401)
         .json({ message: "YOU ENTERED AN INVALID EMAIL OR PASSWORD" });
     }
-
+   
     const token = jwt.sign(
       {
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
         id: user._id,
-      },
+      }, 
       secretKey // Provide the secret key here
     );
 
