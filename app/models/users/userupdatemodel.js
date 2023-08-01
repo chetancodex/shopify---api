@@ -1,7 +1,10 @@
-const mongoose = require("mongoose");
-const UserUpdateSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  contactNumber: { type: String, required: true },
-});
-
-module.exports = mongoose.model("UserUpdate", UserUpdateSchema);
+const mongoose = require('mongoose')
+const userDetailsSchema = new mongoose.Schema({
+    username : String,
+    contactNumber : Number,
+    city: String,
+    street: String,
+    houseNumber : Number,
+    zipcode: Number,
+  });
+module.exports = mongoose.model('Userdetails', userDetailsSchema)

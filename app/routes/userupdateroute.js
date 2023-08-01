@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/users/userupdatemodel");
 const mongoose = require("mongoose");
 const UserupdateController = require('../controllers/userupdatecontroller')
 // const user = require("../models/user");
@@ -21,7 +20,7 @@ router.get("/", (req, res, next) => {
 });
 // Post user
 router.post("/userdetails", UserupdateController.userdetails);
-router.post("/useraddress", UserupdateController.useraddress);
+
 
 
 
