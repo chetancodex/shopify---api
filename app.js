@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 app.use("/newuser", newUserRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
+app.use("/userUpdate", userUpdateRoutes);
 
 // JWT token verifier function
 app.use((req, res, next) => {
@@ -57,7 +58,7 @@ app.use((req, res, next) => {
     req.user = undefined;
   }
 });
-app.use("/userUpdate", userUpdateRoutes);
+
 
 
 //Exports

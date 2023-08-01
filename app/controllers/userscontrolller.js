@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const User = require("./../models/newusermodel");
+const User = require("./../models/users/newusermodel");
 const secretKey = "your_secret_key_here";
 // To Register routes
 exports.register = (req, res, next) => {
