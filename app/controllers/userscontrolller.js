@@ -6,17 +6,14 @@ const secretKey = "your_secret_key_here";
 // To Register routes
 exports.register = (req, res, next) => {
   const newUser = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
     email: req.body.email,
+    username : req.body.username,
     hash_password: bcrypt.hashSync(req.body.password, 10),
   });
   newUser.save().then((user) => {
     return res.status(200).json({
       message: "USER CREATED",
       UserDetails: {
-        firstName: user.firstName,
-        lastName: user.lastName,
         email: user.email,
       },
     });
@@ -36,8 +33,7 @@ exports.sign_in = async (req, res) => {
     const token = jwt.sign(
       {
         email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        username : user.username,
         id: user._id,
       }, 
       secretKey // Provide the secret key here
