@@ -19,7 +19,8 @@ router.get("/", (req, res, next) => {
     });
 });
 // Post user
-router.post("/userdetails", UserupdateController.userdetails);
+// router.post("/userdetails", UserupdateController.userdetails);
 router.post('/username',UserupdateController.username);
+router.post('/userupdate', UserupdateController.updateUserDetails)
 router.post('/profile',UserupdateController.getdetails)
 module.exports = router;
