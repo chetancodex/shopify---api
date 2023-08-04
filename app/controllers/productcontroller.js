@@ -14,6 +14,7 @@ exports.getAllProducts = (req, res, next) => {
             image: doc.image,
             rating: doc.rating,
             _id: doc._id,
+            id: doc._id,
             request: {
               type: "GET",
               url: "http://localhost:3000/products/" + doc._id,
@@ -76,11 +77,7 @@ exports.getProductId = (req, res, next) => {
       if (doc) {
         console.log(doc);
         res.status(200).json({
-          product: doc,
-          request: {
-            type: "GET",
-            url: "http://localhost:3000/products",
-          },
+          product: doc
         });
       } else {
         res.status(404).json({ message: "Id not Found" });
