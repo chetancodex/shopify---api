@@ -7,7 +7,7 @@ const secretKey = "your_secret_key_here";
 exports.register = (req, res, next) => {
   const newUser = new User({
     email: req.body.email,
-    username : req.body.username,
+    username: req.body.username,
     hash_password: bcrypt.hashSync(req.body.password, 10),
   });
   newUser.save().then((user) => {
@@ -29,13 +29,13 @@ exports.sign_in = async (req, res) => {
         .status(401)
         .json({ message: "YOU ENTERED AN INVALID EMAIL OR PASSWORD" });
     }
-   
+
     const token = jwt.sign(
       {
         email: user.email,
-        username : user.username,
+        username: user.username,
         id: user._id,
-      }, 
+      },
       secretKey // Provide the secret key here
     );
 

@@ -77,7 +77,7 @@ exports.getProductId = (req, res, next) => {
       if (doc) {
         console.log(doc);
         res.status(200).json({
-          product: doc
+          product: doc,
         });
       } else {
         res.status(404).json({ message: "Id not Found" });

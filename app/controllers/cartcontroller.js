@@ -21,7 +21,7 @@ exports.postCart = (req, res, next) => {
     });
   } else {
     const { userId, productId, quantity } = req.body;
-    if ((!userId || !productId || !quantity)) {
+    if (!userId || !productId || !quantity) {
       return res.status(400).json({
         error: "Invalid data provided",
       });
@@ -30,24 +30,26 @@ exports.postCart = (req, res, next) => {
       productId: productId,
       quantity: quantity,
     };
-    
+
     Cart.findOneAndUpdate(
       { userId },
       { $push: { products: cartItem } },
       { new: true, upsert: true }
-    ).then((updatedcart) => {
+    )
+      .then((updatedcart) => {
         res.status(200).json({
-            message : "Cart has been created or updated",
-            cartinfo : {
-                id : updatedcart._id,
-                userId : updatedcart.userId,
-                products : updatedcart.products
-            }
-        })
-    }).catch((err)=> {
+          message: "Cart has been created or updated",
+          cartinfo: {
+            id: updatedcart._id,
+            userId: updatedcart.userId,
+            products: updatedcart.products,
+          },
+        });
+      })
+      .catch((err) => {
         res.status(500).json({
-            message : err
-        })
-    });
+          message: err,
+        });
+      });
   }
 };

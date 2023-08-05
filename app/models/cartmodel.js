@@ -5,7 +5,7 @@ const User = require("./users/newusermodel");
 const cartItemSchema = new mongoose.Schema({
   product: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product',
+    ref: "Product",
     required: true,
   },
   quantity: {
@@ -18,10 +18,10 @@ const cartItemSchema = new mongoose.Schema({
 const cartSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
   products: [cartItemSchema],
 });
 
-module.exports = mongoose.model('Cart', cartSchema);
+module.exports = mongoose.model("Cart", cartSchema);
