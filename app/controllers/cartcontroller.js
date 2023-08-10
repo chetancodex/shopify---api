@@ -1,7 +1,8 @@
 const Cart = require("../models/cartmodel");
 
 exports.getCart = (req, res, next) => {
-  Cart.find()
+  const username= req.params.username
+  Cart.findOne(username)
     .then((docs) => {
       res.status(200).json(docs);
     })
